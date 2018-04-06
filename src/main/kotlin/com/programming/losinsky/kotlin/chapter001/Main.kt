@@ -1,6 +1,5 @@
 package com.programming.losinsky.kotlin.chapter001
 
-import com.programming.losinsky.kotlin.chapter001.constants.*
 import java.io.File
 import java.io.IOException
 import java.nio.file.Files
@@ -8,6 +7,7 @@ import java.nio.file.Path
 import java.util.*
 import com.programming.losinsky.kotlin.chapter001.FirstClassPackage.Foo as Foo
 import com.programming.losinsky.kotlin.chapter001.SecondClassPackage.Foo as Foo2
+import com.programming.losinsky.kotlin.chapter002.Person as Person002
 
 fun main (args: Array<String>)
 {
@@ -145,18 +145,19 @@ fun main (args: Array<String>)
 
     oneOrZero(20)
     println(isSingleDigit(10))
-    println(biggerValue(21,20))
+    println(biggerValue(21, 20))
 
-    printEvenNumbers(listOf(1,22,30,11,46,74,42,0,9))
+    printEvenNumbers(listOf(1, 22, 30, 11, 46, 74, 42, 0, 9))
 
-1}
+    print(printValue(listOf(1, 2, 3, 6, 7, 324, 234, 325, 25, 532, 43)))
+}
 
 fun isZero (x: Int) : Boolean {
 
     return if (x == 0) true else false
 }
 
-fun readFile (path: Path) : Unit {
+fun readFile (path: Path) {
     val input = Files.newInputStream(path)
 
     try {
@@ -249,6 +250,16 @@ fun printEvenNumbers(list: List<Int>) {
     list.forEach{ x ->
         when {
             x % 2 == 0 -> print("$x ")
+        }
+    }
+}
+
+fun printValue (list: List<Int>) {
+
+    list.forEach label@{
+        if (it % 2 == 0) {
+            //print("$it ")
+            return@label
         }
     }
 }
